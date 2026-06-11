@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "type": "Poor lighting",
+    "lat": 28.6139,
+    "lng": 77.209,
+    "description": "Street lights are broken near the park.",
+    "timestamp": "2026-06-10T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "type": "Poor lighting",
+    "lat": 28.6141,
+    "lng": 77.2092,
+    "description": "Very dark street corner, no visibility at night.",
+    "timestamp": "2026-06-10T12:00:00Z"
+  },
+  {
+    "id": 3,
+    "type": "Harassment",
+    "lat": 28.6141,
+    "lng": 77.2091,
+    "description": "Group catcalling near this junction.",
+    "timestamp": "2026-06-10T14:00:00Z"
+  }
+]

@@ -366,6 +366,11 @@ app.post('/api/sos', async (req, res) => {
   res.json({ success: true, twilioUsed, results });
 });
 
-// ─── Start Server ───────────────────────────────────────────────────────────────
-const server = await app.listen(PORT);
-console.log(`SafeRoute backend running on http://localhost:${PORT}`);
+// ─── Start Server (Conditional for Vercel Serverless compatibility) ──────────────
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`SafeRoute backend running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;

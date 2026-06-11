@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShieldAlert, Users, Navigation, AlertCircle, MapPin } from 'lucide-react';
 import LocationAutocomplete from '../components/LocationAutocomplete';
+import { API_BASE } from '../config';
 
 const Dashboard = () => {
   const [location, setLocation] = useState('');
@@ -31,7 +32,7 @@ const Dashboard = () => {
     };
 
     try {
-      await fetch('http://localhost:5001/api/reports', {
+      await fetch(`${API_BASE}/api/reports`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newReport)

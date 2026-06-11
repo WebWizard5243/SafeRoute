@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Navigation, AlertTriangle, ShieldCheck } from 'lucide-react';
 import MapComponent from '../components/MapComponent';
 import LocationAutocomplete from '../components/LocationAutocomplete';
+import { API_BASE } from '../config';
 
 const RoutePlanner = () => {
   const [start, setStart] = useState('');
@@ -14,7 +15,7 @@ const RoutePlanner = () => {
   const [selectedRouteId, setSelectedRouteId] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/hazards')
+    fetch(`${API_BASE}/api/hazards`)
       .then(res => res.json())
       .then(data => setHazards(data))
       .catch(err => console.error("Error fetching hazards", err));
@@ -31,7 +32,7 @@ const RoutePlanner = () => {
         query += `&startLat=${start.lat}&startLng=${start.lng}&destLat=${destination.lat}&destLng=${destination.lng}`;
       }
       
-      const res = await fetch(`http://localhost:5001/api/routes${query}`);
+      const res = await fetch(`${API_BASE}/api/routes${query}`);
       const data = await res.json();
       setRoutes(data);
       setSearched(true);
@@ -43,7 +44,7 @@ const RoutePlanner = () => {
       if (start.lat && destination.lat) {
         const midLat = (start.lat + destination.lat) / 2;
         const midLng = (start.lng + destination.lng) / 2;
-        const markersRes = await fetch(`http://localhost:5001/api/markers?lat=${midLat}&lng=${midLng}`);
+        const markersRes = await fetch(`${API_BASE}/api/markers?lat=${midLat}&lng=${midLng}`);
         const markersData = await markersRes.json();
         setMarkers(markersData);
       }

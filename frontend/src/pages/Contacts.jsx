@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Phone, AlertCircle, Plus, Trash2, MessageSquare, Bot } from 'lucide-react';
+import { API_BASE } from '../config';
 
 const TypewriterText = ({ text, speed = 15, onComplete }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -90,7 +91,7 @@ const Contacts = () => {
       }
 
       try {
-        const res = await fetch('http://localhost:5001/api/sos', {
+        const res = await fetch(`${API_BASE}/api/sos`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -141,7 +142,7 @@ const Contacts = () => {
     setChatLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5001/api/chat', {
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg })
